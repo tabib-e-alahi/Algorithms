@@ -39,10 +39,11 @@ int main()
         if(vis[i] == false)
         {
             dfs(i);
-            cnt++
+            cnt++;
         }
     }
 
+    cout << endl;
     cout << cnt << endl;
 
     return 0;
