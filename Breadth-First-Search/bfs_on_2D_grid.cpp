@@ -34,7 +34,7 @@ void bfs_on_2D_grid(int si, int sj)
             int ci = par_i + dir[i].first;
             int cj = par_j + dir[i].second;
 
-            if (valid(ci, cj) && !vis[ci][cj])
+            if (valid(ci, cj) && !vis[ci][cj] && grid[ci][cj] == '.')
             {
                 q.push({ci, cj});
                 vis[ci][cj] = true;

@@ -20,7 +20,7 @@ void dfs_on_2D_grid(int si, int sj)// source index(i,j)
     for(int i =0; i < 4; i++){
         int ci = si + dir[i].first;// ci-> child i
         int cj = sj + dir[i].second; // cj -> child j
-        if(valid(ci, cj) && !vis[ci][cj])
+        if(valid(ci, cj) && !vis[ci][cj] && grid[ci][cj] == '.')
             dfs_on_2D_grid(ci, cj);
     }
 }
