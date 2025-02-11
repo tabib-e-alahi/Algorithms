@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-vector<int> adj_list[1005];// array of vector
+vector<int> adj_list[1005]; // array of vector
 
 bool vis[1005];
 int level[1005];
@@ -61,7 +61,10 @@ int main(){
 
     reverse(path.begin(), path.end());
 
+    cout << path[0];
+
     for(int x: path)
-        cout << x << " ";
+        if(x != path[0])
+            cout << " -> " << x;
 
 }
