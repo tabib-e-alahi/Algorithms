@@ -16,14 +16,15 @@ void bfs(int src)
         int par = q.front();
         q.pop();
 
-        cout << par << endl;
-
         for(int child: adj_list[par])
         {
+            if(vis[child] && parent[par] != child)
+                hasCycle = true;
             if(!vis[child])
             {
                 q.push(child);
                 vis[child] = true;
+                parent[child] = par;
             }
         }
     }
