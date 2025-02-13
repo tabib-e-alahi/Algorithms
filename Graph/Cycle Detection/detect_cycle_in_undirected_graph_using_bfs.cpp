@@ -43,6 +43,8 @@ int main()
     }
 
     memset(vis, false, sizeof(vis));
+    memset(parent, -1, sizeof(parent));
+    hasCycle = false;
     for(int i = 0; i < n; i++)
     {
         if(!vis[i])
@@ -50,4 +52,9 @@ int main()
             bfs(i);
         }
     }
+
+    if(hasCycle)
+        cout << "Cycle Detected\n";
+    else
+        cout << "No Cycle\n";    
 }
