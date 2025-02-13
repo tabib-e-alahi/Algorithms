@@ -2,6 +2,8 @@
 using namespace std;
 bool vis[105];
 vector<int> adj_list[105];
+int parent[105];
+bool hasCycle;
 
 void bfs(int src)
 {
