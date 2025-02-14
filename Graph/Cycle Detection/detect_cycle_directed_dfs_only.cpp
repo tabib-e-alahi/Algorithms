@@ -1,8 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
-
 bool vis[105];
-int parent[105];
+bool pathvis[105];
 vector<int> adj_list[105];
 bool hasCycle = false;
 int n, e;
@@ -10,15 +9,17 @@ int n, e;
 void dfs(int src)
 {
     vis[src] = true;
+    pathvis[src] = true;
     for(int child: adj_list[src])
     {
-        if(vis[child] && parent[src] != child)
+        if(vis[child] && pathvis[child])
             hasCycle = true;
         if(!vis[child]){
-            parent[child] = src;
             dfs(child);
         }
     }
+
+    pathvis[src] = false;
 }
 
 int main()
@@ -29,11 +30,10 @@ int main()
         int a, b;
         cin >> a >> b;
         adj_list[a].push_back(b);
-        adj_list[b].push_back(a);
     }
 
     memset(vis, false, sizeof(vis));
-    memset(parent, -1, sizeof(parent));
+    memset(pathvis, false, sizeof(pathvis));
 
     for(int i = 0; i < n; i++)
     {
