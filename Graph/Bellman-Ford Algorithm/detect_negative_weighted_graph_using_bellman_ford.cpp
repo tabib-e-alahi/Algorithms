@@ -32,6 +32,24 @@ void bellman_ford()
                 dis[b] = dis[a] + c;
         }
     }
+
+    bool cycle = true;
+    /*concept: after iterating all the process, 
+    we will iterate the process one last time
+    in this process if the value again updated then
+    th egraph is negative weighted cycle*/
+    for(auto ed: edge_list)
+        {
+            int a, b, c;
+            a = ed.a;
+            b = ed.b;
+            c = ed.c;
+
+            if(dis[a] != INT_MAX && dis[a] + c < dis[b]){
+                cycle = true;
+                break;
+            }
+        }
 }
 
 int main()
