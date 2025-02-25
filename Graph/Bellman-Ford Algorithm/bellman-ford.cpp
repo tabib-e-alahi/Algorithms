@@ -53,9 +53,9 @@ int main()
 
     bellman_ford();
 
-    for(auto ed: edge_list)
+    for(int i = 0; i < n; i++)
     {
-        cout << ed.a << ed.b << ed.c << endl;
+        cout << i << " -> " << dis[i] << endl;
     }
 
 }
