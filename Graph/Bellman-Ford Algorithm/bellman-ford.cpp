@@ -14,12 +14,29 @@ class Edge
 };
 
 int dis[1005];
+int n ,e;
+vector<Edge> edge_list;
+
+void bellman_ford()
+{
+    for(int i = 0; i < n-1; i++)
+    {
+        for(auto ed: edge_list)
+        {
+            int a, b, c;
+            a = ed.a;
+            b = ed.b;
+            c = ed.c;
+
+            if(dis[a] != INT_MAX && dis[a] + c < dis[b])
+                dis[b] = dis[a] + c;
+        }
+    }
+}
 
 int main()
 {
-    int n ,e;
     cin >> n >> e;
-    vector<Edge> edge_list;
     while(e--)
     {
         int a, b , c;
@@ -33,6 +50,8 @@ int main()
     }
     // here 0 is the source
     dis[0] = 0;
+
+    bellman_ford();
 
     for(auto ed: edge_list)
     {
