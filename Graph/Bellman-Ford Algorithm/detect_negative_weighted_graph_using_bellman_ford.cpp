@@ -33,7 +33,7 @@ void bellman_ford()
         }
     }
 
-    bool cycle = true;
+    bool cycle = false;
     /*concept: after iterating all the process, 
     we will iterate the process one last time
     in this process if the value again updated then
@@ -45,11 +45,20 @@ void bellman_ford()
             b = ed.b;
             c = ed.c;
 
-            if(dis[a] != INT_MAX && dis[a] + c < dis[b]){
+            if(dis[a] != INT_MAX && (dis[a] + c) < dis[b]){
                 cycle = true;
                 break;
             }
         }
+
+        if(cycle)
+            cout << "Negative weighted cycle detected\n";
+        else{
+            for(int i = 0; i < n; i++)
+            {
+                cout << i << " -> " << dis[i] << endl;
+            }
+        }    
 }
 
 int main()
@@ -71,9 +80,5 @@ int main()
 
     bellman_ford();
 
-    for(int i = 0; i < n; i++)
-    {
-        cout << i << " -> " << dis[i] << endl;
-    }
-
+    return 0;
 }
